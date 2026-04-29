@@ -1,5 +1,5 @@
-import { build } from "./build.ts";
 import { stat } from "node:fs/promises";
+import { build } from "./build.ts";
 
 const DIST_DIR = new URL("../dist", import.meta.url).pathname;
 
@@ -11,34 +11,40 @@ declare global {
   var server: ReturnType<typeof Bun.serve> | undefined;
 }
 
+async function isDirectory(path: string) {
+  try {
+    return (await stat(path)).isDirectory();
+  } catch {
+    return false;
+  }
+}
+
 globalThis.server ??= Bun.serve({
   port: 9000,
   async fetch(req) {
     const url = new URL(req.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
-    const filePath = DIST_DIR + path;
-    const lastSegment = path.split("/").at(-1) ?? "";
-    const hasExtension = lastSegment.includes(".");
-    let isDirectory = false;
-
-    try {
-      isDirectory = (await stat(filePath)).isDirectory();
-    } catch {
-      isDirectory = false;
+    let filePath = DIST_DIR + path;
+    let file = Bun.file(filePath);
+    if (await file.exists()) {
+      return new Response(file);
     }
 
-    const resolvedPath = isDirectory
-      ? `${filePath}/index.html`
-      : hasExtension
-        ? filePath
-        : `${filePath}.html`;
-
-    const file = Bun.file(resolvedPath);
-    if (!(await file.exists())) {
-      return new Response("Not found", { status: 404 });
+    const htmlFile = Bun.file(`${filePath}.html`);
+    if (await htmlFile.exists()) {
+      return new Response(htmlFile);
     }
 
-    return new Response(file);
+    if (await isDirectory(filePath)) {
+      filePath = `${filePath}/index.html`;
+    }
+
+    file = Bun.file(filePath);
+    if (await file.exists()) {
+      return new Response(file);
+    }
+
+    return new Response("Not found", { status: 404 });
   },
   error() {
     return new Response("Not found", { status: 404 });
