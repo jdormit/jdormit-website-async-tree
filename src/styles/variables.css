@@ -11,8 +11,8 @@
   --color-bg: white;
 
   /* Typography */
-  --font-body: 'Source Sans Pro', sans-serif;
-  --font-mono: 'Source Code Pro', monospace;
+  --font-body: "Source Sans Pro", sans-serif;
+  --font-mono: "Source Code Pro", monospace;
   --font-size-base: 112.5%; /* 18px */
   --line-height-base: 1.56;
   --rhythm: 1.56rem; /* vertical rhythm unit */

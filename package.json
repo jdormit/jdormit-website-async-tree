@@ -3,11 +3,10 @@
   "scripts": {
     "build": "bun scripts/build.ts",
     "dev": "bun --hot scripts/dev.ts",
-    "format": "bunx @biomejs/biome format --write ."
+    "format": "bunx prettier --write ."
   },
   "private": true,
   "devDependencies": {
-    "@biomejs/biome": "^2.4.13",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -16,6 +15,7 @@
   "dependencies": {
     "@weborigami/async-tree": "^0.6.15",
     "excerpt-html": "^1.2.2",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "prettier": "^3.8.3"
   }
 }
