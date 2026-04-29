@@ -1,21 +1,23 @@
 import { Tree } from "@weborigami/async-tree";
 import excerptHtml from "excerpt-html";
+import baseLayout from "./baseLayout";
 import posts from "./posts";
 import formatDate from "./formatDate";
 
 const renderPost = async (post, postName) => {
   const excerpt = excerptHtml(post.body, { pruneLength: 500 });
+  const slug = postName.replace(/\.html$/, "");
   return `
   <li>
-    <h4>${post.data.title}</h4>
-    <p>Posted on ${formatDate(post.data.pubDate)}</p>
+    <h2><a href="/blog/${slug}">${post.data.title}</a></h2>
+    <p class="post-date">Posted on ${formatDate(post.data.pubDate)}</p>
     <p>${excerpt}</p>
-    <a href="/blog/${postName}">Read more</a>
+    <a class="read-more" href="/blog/${slug}">Read more...</a>
   </li>
   `;
 };
 
-export default await Tree.text`
+const content = await Tree.text`
 <main>
   <h1>Jeremy Dormitzer's blog</h1>
   <ul>
@@ -23,3 +25,8 @@ export default await Tree.text`
   </ul>
 </main>
 `;
+
+export default await baseLayout(content, {
+  title: "Jeremy Dormitzer's blog",
+  pageStyle: "blog.css",
+});

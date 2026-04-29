@@ -1,0 +1,47 @@
+/* ============================================================
+   Homepage layout
+   
+   Uses a 3-column grid to reserve the left zone for a future
+   generative tree illustration, and center content to the right.
+   ============================================================ */
+
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+/* The tree slot occupies the left ~40% of the viewport.
+   Content starts roughly at the midpoint.
+   When the tree is added it will be position: absolute in this area. */
+.tree-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  pointer-events: none;
+}
+
+main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr min(var(--max-width-main), 95%) 1fr;
+  align-content: start;
+  padding-top: calc(var(--rhythm) * 2);
+  padding-bottom: calc(var(--rhythm) * 2);
+}
+
+main > * {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr min(var(--max-width-main), 95%) 1fr;
+  }
+
+  .tree-slot {
+    display: none;
+  }
+}

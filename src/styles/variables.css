@@ -1,0 +1,39 @@
+:root {
+  /* Colors */
+  --color-text: hsla(0, 0%, 0%, 0.7);
+  --color-text-strong: hsla(0, 0%, 0%, 0.85);
+  --color-text-muted: hsla(0, 0%, 0%, 0.6);
+  --color-link: #419eda;
+  --color-link-hover: #2a6496;
+  --color-border: hsla(0, 0%, 0%, 0.12);
+  --color-hr: hsla(0, 0%, 0%, 0.2);
+  --color-blockquote-border: hsla(0, 0%, 0%, 0.13);
+  --color-bg: white;
+
+  /* Typography */
+  --font-body: 'Source Sans Pro', sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
+  --font-size-base: 112.5%; /* 18px */
+  --line-height-base: 1.56;
+  --rhythm: 1.56rem; /* vertical rhythm unit */
+
+  /* Heading sizes */
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.73286rem;
+  --font-size-h3: 1.4427rem;
+  --font-size-h4: 1rem;
+  --font-size-h5: 0.83255rem;
+  --font-size-h6: 0.75966rem;
+  --font-size-small: 0.85rem;
+  --font-size-blockquote: 1.20112rem;
+
+  /* Layout */
+  --header-height: 60px;
+  --max-width-container: 1100px;
+  --max-width-content: 80ch;
+  --max-width-main: 60ch;
+  --content-padding: 32px;
+
+  /* Spacing */
+  --nav-item-gap: 24px;
+}
