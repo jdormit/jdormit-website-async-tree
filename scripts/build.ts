@@ -7,7 +7,7 @@ export const build = async () => {
   await Tree.clear(buildTree); // Erase any existing files
   await Tree.assign(buildTree, site); // Copy site to build folder
   console.log("Build complete");
-}
+};
 
 if (import.meta.main) {
   await build();

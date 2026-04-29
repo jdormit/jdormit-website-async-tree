@@ -2,10 +2,12 @@
   "name": "jdormit-website-async-tree",
   "scripts": {
     "build": "bun scripts/build.ts",
-    "dev": "bun --hot scripts/dev.ts"
+    "dev": "bun --hot scripts/dev.ts",
+    "format": "bunx @biomejs/biome format --write ."
   },
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "^2.4.13",
     "@types/bun": "latest"
   },
   "peerDependencies": {
