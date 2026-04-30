@@ -8,7 +8,7 @@ export const build = async () => {
   const buildTree = new FileMap(buildDir);
   await Tree.clear(buildTree); // Erase any existing files
   await Tree.assign(buildTree, await site()); // Copy site to build folder
-  await $`bunx --bun prettier --ignore-path='' --write ${buildDir}`;
+  await $`bunx --bun prettier --ignore-path='' --write ${buildDir}`.quiet();
   console.log("Build complete");
 };
 
