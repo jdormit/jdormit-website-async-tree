@@ -2,7 +2,7 @@
   "name": "jdormit-website-async-tree",
   "scripts": {
     "build": "bun scripts/build.ts",
-    "dev": "nodemon --watch scripts --watch src -e ts,js,html,css,md --exec 'bun scripts/dev.ts'",
+    "dev": "bunx --bun nodemon --watch scripts --watch src -e ts,js,html,css,md --exec 'bun scripts/dev.ts'",
     "format": "bunx --bun prettier --write ."
   },
   "private": true,
