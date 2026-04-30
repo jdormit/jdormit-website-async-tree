@@ -2,12 +2,13 @@
   "name": "jdormit-website-async-tree",
   "scripts": {
     "build": "bun scripts/build.ts",
-    "dev": "bun --hot scripts/dev.ts",
+    "dev": "nodemon --watch scripts --watch src -e ts,js,html,css,md --exec 'bun scripts/dev.ts'",
     "format": "bunx --bun prettier --write ."
   },
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "nodemon": "^3.1.14"
   },
   "peerDependencies": {
     "typescript": "^5"
